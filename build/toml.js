@@ -2275,22 +2275,25 @@ else if (typeof exports === 'object')
                             text0 += address23.textValue;
                             labelled0.second = address23;
                             var address26 = null;
+                            var index8 = this._offset;
+                            var index9 = this._offset, elements7 = [], labelled7 = {}, text7 = "";
+                            var address27 = null;
                             var slice38 = null;
                             if (this._input.length > this._offset) {
                               slice38 = this._input.substring(this._offset, this._offset + 1);
                             } else {
                               slice38 = null;
                             }
-                            if (slice38 === "Z") {
+                            if (slice38 === ".") {
                               var klass25 = this.constructor.SyntaxNode;
                               var type25 = null;
-                              address26 = new klass25("Z", this._offset, []);
+                              address27 = new klass25(".", this._offset, []);
                               if (typeof type25 === "object") {
-                                extend(address26, type25);
+                                extend(address27, type25);
                               }
                               this._offset += 1;
                             } else {
-                              address26 = null;
+                              address27 = null;
                               var slice39 = null;
                               if (this._input.length > this._offset) {
                                 slice39 = this._input.substring(this._offset, this._offset + 1);
@@ -2298,12 +2301,131 @@ else if (typeof exports === 'object')
                                 slice39 = null;
                               }
                               if (!this.error || this.error.offset <= this._offset) {
-                                this.error = this.constructor.lastError = {input: this._input, offset: this._offset, expected: "\"Z\""};
+                                this.error = this.constructor.lastError = {input: this._input, offset: this._offset, expected: "\".\""};
                               }
+                            }
+                            if (address27) {
+                              elements7.push(address27);
+                              text7 += address27.textValue;
+                              var address28 = null;
+                              var remaining0 = 1, index10 = this._offset, elements8 = [], text8 = "", address29 = true;
+                              while (address29) {
+                                var slice40 = null;
+                                if (this._input.length > this._offset) {
+                                  slice40 = this._input.substring(this._offset, this._offset + 1);
+                                } else {
+                                  slice40 = null;
+                                }
+                                if (slice40 && /^[0-9]/.test(slice40)) {
+                                  var klass26 = this.constructor.SyntaxNode;
+                                  var type26 = null;
+                                  address29 = new klass26(slice40, this._offset, []);
+                                  if (typeof type26 === "object") {
+                                    extend(address29, type26);
+                                  }
+                                  this._offset += 1;
+                                } else {
+                                  address29 = null;
+                                  var slice41 = null;
+                                  if (this._input.length > this._offset) {
+                                    slice41 = this._input.substring(this._offset, this._offset + 1);
+                                  } else {
+                                    slice41 = null;
+                                  }
+                                  if (!this.error || this.error.offset <= this._offset) {
+                                    this.error = this.constructor.lastError = {input: this._input, offset: this._offset, expected: "[0-9]"};
+                                  }
+                                }
+                                if (address29) {
+                                  elements8.push(address29);
+                                  text8 += address29.textValue;
+                                  remaining0 -= 1;
+                                }
+                              }
+                              if (remaining0 <= 0) {
+                                this._offset = index10;
+                                var klass27 = this.constructor.SyntaxNode;
+                                var type27 = null;
+                                address28 = new klass27(text8, this._offset, elements8);
+                                if (typeof type27 === "object") {
+                                  extend(address28, type27);
+                                }
+                                this._offset += text8.length;
+                              } else {
+                                address28 = null;
+                              }
+                              if (address28) {
+                                elements7.push(address28);
+                                text7 += address28.textValue;
+                              } else {
+                                elements7 = null;
+                                this._offset = index9;
+                              }
+                            } else {
+                              elements7 = null;
+                              this._offset = index9;
+                            }
+                            if (elements7) {
+                              this._offset = index9;
+                              var klass28 = this.constructor.SyntaxNode;
+                              var type28 = null;
+                              address26 = new klass28(text7, this._offset, elements7, labelled7);
+                              if (typeof type28 === "object") {
+                                extend(address26, type28);
+                              }
+                              this._offset += text7.length;
+                            } else {
+                              address26 = null;
+                            }
+                            if (address26) {
+                            } else {
+                              this._offset = index8;
+                              var klass29 = this.constructor.SyntaxNode;
+                              var type29 = null;
+                              address26 = new klass29("", this._offset, []);
+                              if (typeof type29 === "object") {
+                                extend(address26, type29);
+                              }
+                              this._offset += 0;
                             }
                             if (address26) {
                               elements0.push(address26);
                               text0 += address26.textValue;
+                              labelled0.fraction = address26;
+                              var address30 = null;
+                              var slice42 = null;
+                              if (this._input.length > this._offset) {
+                                slice42 = this._input.substring(this._offset, this._offset + 1);
+                              } else {
+                                slice42 = null;
+                              }
+                              if (slice42 === "Z") {
+                                var klass30 = this.constructor.SyntaxNode;
+                                var type30 = null;
+                                address30 = new klass30("Z", this._offset, []);
+                                if (typeof type30 === "object") {
+                                  extend(address30, type30);
+                                }
+                                this._offset += 1;
+                              } else {
+                                address30 = null;
+                                var slice43 = null;
+                                if (this._input.length > this._offset) {
+                                  slice43 = this._input.substring(this._offset, this._offset + 1);
+                                } else {
+                                  slice43 = null;
+                                }
+                                if (!this.error || this.error.offset <= this._offset) {
+                                  this.error = this.constructor.lastError = {input: this._input, offset: this._offset, expected: "\"Z\""};
+                                }
+                              }
+                              if (address30) {
+                                elements0.push(address30);
+                                text0 += address30.textValue;
+                              } else {
+                                elements0 = null;
+                                this._offset = index1;
+                              }
                             } else {
                               elements0 = null;
                               this._offset = index1;
@@ -2354,11 +2476,11 @@ else if (typeof exports === 'object')
       }
       if (elements0) {
         this._offset = index1;
-        var klass26 = this.constructor.SyntaxNode;
-        var type26 = find(this.constructor, "Datetime");
-        address0 = new klass26(text0, this._offset, elements0, labelled0);
-        if (typeof type26 === "object") {
-          extend(address0, type26);
+        var klass31 = this.constructor.SyntaxNode;
+        var type31 = find(this.constructor, "Datetime");
+        address0 = new klass31(text0, this._offset, elements0, labelled0);
+        if (typeof type31 === "object") {
+          extend(address0, type31);
         }
         this._offset += text0.length;
       } else {
