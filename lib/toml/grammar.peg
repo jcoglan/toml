@@ -18,7 +18,9 @@ grammar TOML.Document
 
   array           <- (empty_array / string_array / datetime_array / float_array / integer_array / boolean_array / array_array) <Array>
 
-  string          <- "\"" ("\\" . / [^"])* "\"" <String>
+  string          <- "\"" ("\\" escape_char / [^"])* "\"" <String>
+
+  escape_char     <- "0" / "t" / "n" / "r" / "\"" / "\\"
 
   integer         <- "-"? [1-9] [0-9]* <Integer>
 
