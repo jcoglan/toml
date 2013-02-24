@@ -4,5 +4,17 @@
 , "devDependencies":  {"canopy": "", "nopt": ""}
 
 , "scripts":          {"test": "node test/node.js"}
+
+, "testling": {
+    "browsers": {
+      "chrome": [23],
+    },
+    "scripts": [
+      "build/toml-min.js",
+      "vendor/jstest.js",
+      "test/specs/toml_spec.js",
+      "test/runner.js"
+    ]
+  }
 }
 
