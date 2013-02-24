@@ -1,8 +1,34 @@
-# TOML.js [![Build Status](https://travis-ci.org/jcoglan/toml.png?)](https://travis-ci.org/jcoglan/toml)
+# TOML.js [![Build Status](https://travis-ci.org/jcoglan/toml.png)](https://travis-ci.org/jcoglan/toml)
 
 An cross-platform JavaScript TOML parser done properly.
 
-[![Browser support](http://ci.testling.com/jcoglan/toml.png?)](http://ci.testling.com/jcoglan/toml)
+[![Browser support](http://ci.testling.com/jcoglan/toml.png)](http://ci.testling.com/jcoglan/toml)
+
+
+# Usage
+
+In Node:
+
+```js
+var toml = require('toml').TOML,
+    fs   = require('fs');
+
+var data = toml.parse(fs.readFileSync('./config.tml').toString());
+```
+
+In the browser:
+
+```html
+<script type="text/javascript" src="toml-min.js"></script>
+<script type="text/javascript">
+  var data = TOML.parse('\
+               [config]\n\
+               foo = "something"\n\
+               bar = 42')
+
+  // -> {config: {foo: "something", bar: 42}}
+</script>
+```
 
 
 ## License
