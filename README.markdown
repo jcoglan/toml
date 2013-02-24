@@ -2,7 +2,11 @@
 
 An cross-platform JavaScript TOML parser done properly.
 
-[![Browser support](http://ci.testling.com/jcoglan/toml.png)](http://ci.testling.com/jcoglan/toml)
+
+# Supported platforms
+
+* Browsers: see [Testling](http://ci.testling.com/jcoglan/toml)
+* Node: see [Travis](https://travis-ci.org/jcoglan/toml)
 
 
 ## Usage
