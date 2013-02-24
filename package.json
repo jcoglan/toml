@@ -7,7 +7,13 @@
 
 , "testling": {
     "browsers": {
-      "chrome": [23]
+      "chrome":   [4, 22, 23],
+      "firefox":  [3.0, 3.6, 16.0, 17.0],
+      "iexplore": [6, 7, 8, 9, 10],
+      "opera":    [10.5, 11.6, 12.0],
+      "safari":   [5.1, 6.0],
+      "iphone":   [6.0],
+      "ipad":     [6.0]
     },
     "scripts": [
       "build/toml-min.js",
