@@ -10,9 +10,9 @@ grammar TOML.Document
 
   key_segment     <- [^\[\]\.]+
 
-  value_line      <- ignore name ws* "=" ws* value line_end
+  value_line      <- ignore name ws "=" ws value line_end
 
-  name            <- (!ws .)+
+  name            <- (!space .)+
 
   value           <- string / datetime / float / integer / boolean / array
 
@@ -22,37 +22,41 @@ grammar TOML.Document
 
   escape_char     <- "0" / "t" / "n" / "r" / "\"" / "\\"
 
-  integer         <- "-"? [1-9] [0-9]* <Integer>
+  digit           <- [0-9]
 
-  float           <- integer "." [0-9]+ <Float>
+  integer         <- "-"? [1-9] digit* <Integer>
+
+  float           <- integer "." digit+ <Float>
 
   boolean         <- ("true" / "false") <Boolean>
 
-  datetime        <- year:([1-9] [0-9] [0-9] [0-9]) "-"
-                     month:([0-9] [0-9]) "-"
-                     day:([0-9] [0-9]) "T"
-                     hour:([0-9] [0-9]) ":"
-                     minute:([0-9] [0-9]) ":"
-                     second:([0-9] [0-9])
-                     fraction:("." [0-9]+)?
+  datetime        <- year:([1-9] digit digit digit) "-"
+                     month:(digit digit) "-"
+                     day:(digit digit) "T"
+                     hour:(digit digit) ":"
+                     minute:(digit digit) ":"
+                     second:(digit digit)
+                     fraction:("." digit+)?
                      "Z" <Datetime>
 
-  empty_array     <- "[" ws* "]"
+  empty_array     <- "[" ws "]"
   
-  string_array    <- "[" ws* head:string   tail:(ws* "," ws* value:string)*   ws* "]"
-  integer_array   <- "[" ws* head:integer  tail:(ws* "," ws* value:integer)*  ws* "]"
-  float_array     <- "[" ws* head:float    tail:(ws* "," ws* value:float)*    ws* "]"
-  boolean_array   <- "[" ws* head:boolean  tail:(ws* "," ws* value:boolean)*  ws* "]"
-  datetime_array  <- "[" ws* head:datetime tail:(ws* "," ws* value:datetime)* ws* "]"
-  array_array     <- "[" ws* head:array    tail:(ws* "," ws* value:array)*    ws* "]"
+  string_array    <- "[" ws head:string   tail:(ws "," ws value:string)*   ws "]"
+  integer_array   <- "[" ws head:integer  tail:(ws "," ws value:integer)*  ws "]"
+  float_array     <- "[" ws head:float    tail:(ws "," ws value:float)*    ws "]"
+  boolean_array   <- "[" ws head:boolean  tail:(ws "," ws value:boolean)*  ws "]"
+  datetime_array  <- "[" ws head:datetime tail:(ws "," ws value:datetime)* ws "]"
+  array_array     <- "[" ws head:array    tail:(ws "," ws value:array)*    ws "]"
 
-  line_end        <- ws* comment? !(!nl .)
+  line_end        <- ws comment? !(!nl .)
 
-  ignore          <- (comment / ws / nl)*
+  ignore          <- (comment / space / nl)*
 
   comment         <- "#" (!nl .)*
 
-  ws              <- [ \t]
+  ws              <- space*
+
+  space           <- [ \t]
 
   nl              <- "\r\n" / "\r" / "\n"
 
