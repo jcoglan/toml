@@ -5,7 +5,7 @@ An cross-platform JavaScript TOML parser done properly.
 [![Browser support](http://ci.testling.com/jcoglan/toml.png)](http://ci.testling.com/jcoglan/toml)
 
 
-# Usage
+## Usage
 
 In Node:
 
