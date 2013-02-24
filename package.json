@@ -7,7 +7,7 @@
 
 , "testling": {
     "browsers": {
-      "chrome": [23],
+      "chrome": [23]
     },
     "scripts": [
       "build/toml-min.js",
