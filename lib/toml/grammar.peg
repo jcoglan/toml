@@ -1,0 +1,53 @@
+grammar TOML.Document
+
+  document        <- key_group* <Document>
+
+  key_group       <- header:header_line? values:value_line+ ignore <KeyGroup>
+
+  header_line     <- ignore "[" key_name "]" ws* comment? nl
+
+  key_name        <- key_segment ("." key_segment)*
+
+  key_segment     <- [^\[\]\.]+
+
+  value_line      <- ignore name ws* "=" ws* value ws* comment? nl
+
+  name            <- (!ws .)+
+
+  value           <- string / datetime / float / integer / boolean / array
+
+  array           <- (empty_array / string_array / datetime_array / float_array / integer_array / boolean_array / array_array) <Array>
+
+  string          <- "\"" ("\\" . / [^"])* "\"" <String>
+
+  integer         <- "-"? [1-9] [0-9]* <Integer>
+
+  float           <- integer "." [0-9]+ <Float>
+
+  boolean         <- ("true" / "false") <Boolean>
+
+  datetime        <- year:([1-9] [0-9] [0-9] [0-9]) "-"
+                     month:([0-9] [0-9]) "-"
+                     day:([0-9] [0-9]) "T"
+                     hour:([0-9] [0-9]) ":"
+                     minute:([0-9] [0-9]) ":"
+                     second:([0-9] [0-9]) "Z"
+                     <Datetime>
+
+  empty_array     <- "[" ws* "]"
+  
+  string_array    <- "[" ws* head:string   tail:(ws* "," ws* value:string)*   ws* "]"
+  integer_array   <- "[" ws* head:integer  tail:(ws* "," ws* value:integer)*  ws* "]"
+  float_array     <- "[" ws* head:float    tail:(ws* "," ws* value:float)*    ws* "]"
+  boolean_array   <- "[" ws* head:boolean  tail:(ws* "," ws* value:boolean)*  ws* "]"
+  datetime_array  <- "[" ws* head:datetime tail:(ws* "," ws* value:datetime)* ws* "]"
+  array_array     <- "[" ws* head:array    tail:(ws* "," ws* value:array)*    ws* "]"
+
+  ignore          <- (comment / ws / nl)*
+
+  comment         <- "#" (!nl .)*
+
+  ws              <- [ \t]
+
+  nl              <- "\r\n" / "\n" / "\r"
+

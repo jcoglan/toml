@@ -1,0 +1,27 @@
+---
+source_directory:         lib
+build_directory:          build
+layout:                   together
+
+builds:
+  src:
+    packer:               false
+    suffix:               false
+  min:
+    shrink_vars:          true
+    privates:             true
+    source_map:           src
+
+packages:
+  toml:
+    - toml
+    - toml/grammar
+    - toml/nodes/document
+    - toml/nodes/key_group
+    - toml/nodes/string
+    - toml/nodes/integer
+    - toml/nodes/float
+    - toml/nodes/boolean
+    - toml/nodes/datetime
+    - toml/nodes/array
+
