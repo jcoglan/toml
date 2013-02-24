@@ -5025,7 +5025,7 @@ TOML.DocumentParser.Document = {
       }
     }
     if (typeof document[last] !== 'undefined')
-      throw new Error('Duplicate key: ' = full.join('.'));
+      throw new Error('Duplicate key: ' + full.join('.'));
 
     document[last] = value.value.interpret();
   }
