@@ -14,7 +14,7 @@ An cross-platform JavaScript TOML parser done properly.
 In Node:
 
 ```js
-var toml = require('toml').TOML,
+var toml = require('toml'),
     fs   = require('fs');
 
 var data = toml.parse(fs.readFileSync('./config.tml').toString());

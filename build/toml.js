@@ -6,10 +6,12 @@ var TOML = {
   }
 };
 
-if (typeof window !== 'undefined')
+if (typeof window !== 'undefined') {
   window.TOML = TOML;
-else if (typeof exports === 'object')
-  exports.TOML = TOML;
+} else if (typeof exports === 'object') {
+  exports.parse = TOML.parse;
+  exports = undefined;
+}
 
 
 (function() {
