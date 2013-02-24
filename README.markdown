@@ -1,6 +1,8 @@
-# TOML.js
+# TOML.js [![Build Status](https://travis-ci.org/jcoglan/toml.png)](https://travis-ci.org/jcoglan/toml)
 
 An cross-platform JavaScript TOML parser done properly.
+
+[![Browser support](http://ci.testling.com/jcoglan/toml.png)](http://ci.testling.com/jcoglan/toml)
 
 
 ## License
