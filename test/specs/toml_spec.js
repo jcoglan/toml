@@ -14,8 +14,7 @@ TomlSpec = JS.Test.describe("TOML", function() { with(this) {
       string = "toml"\n\
 \n\
       [deep.namespace]\n\
-      age = 29\n\
-      ')
+      age = 29')
   })
 
   it("parses strings", function() { with(this) {

@@ -10,7 +10,7 @@ builds:
   min:
     shrink_vars:          true
     privates:             true
-    source_map:           src
+#    source_map:           src
 
 packages:
   toml:

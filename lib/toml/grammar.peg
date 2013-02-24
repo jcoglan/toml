@@ -4,13 +4,13 @@ grammar TOML.Document
 
   key_group       <- header:header_line? values:value_line+ ignore <KeyGroup>
 
-  header_line     <- ignore "[" key_name "]" ws* comment? nl
+  header_line     <- ignore "[" key_name "]" ws* comment? !(!nl .)
 
   key_name        <- key_segment ("." key_segment)*
 
   key_segment     <- [^\[\]\.]+
 
-  value_line      <- ignore name ws* "=" ws* value ws* comment? nl
+  value_line      <- ignore name ws* "=" ws* value ws* comment? !(!nl .)
 
   name            <- (!ws .)+
 
@@ -52,5 +52,5 @@ grammar TOML.Document
 
   ws              <- [ \t]
 
-  nl              <- "\r\n" / "\n" / "\r"
+  nl              <- "\r\n" / "\r" / "\n"
 
